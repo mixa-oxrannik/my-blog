@@ -36,7 +36,9 @@
     {% endfor %}
     {% if user.is_authenticated %}
         <hr>
-        <h1>Requiring approval!</h1> <!-                                             Comments requiring approval -->
+        {% if not post.published_date %}
+            <h1>Requiring approval!</h1> <!-                                             Comments requiring approval -->
+        {% endif %}
             {% if user.is_authenticated %}
                 {% for comment in post.comments.all %}
                     {% if not comment.approved_comment %}
